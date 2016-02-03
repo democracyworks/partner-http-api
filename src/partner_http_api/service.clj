@@ -27,8 +27,11 @@
                                                        "application/transit+msgpack"
                                                        "application/json"
                                                        "text/plain"])]
-     ["/partner-sites" {:get [:partner-site-list
-                              (bifrost/interceptor channels/partner-site-list)]}]
+     ["/sites"
+      {:get [:partner-site-list
+             (bifrost/interceptor channels/partner-site-list)]}
+      ^:interceptors [(bifrost.i/update-in-response [:body :partner-sites]
+                                                    [:body] identity)]]
      ["/ping" {:get [:ping ping]}]]]])
 
 (defn service []
