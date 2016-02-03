@@ -1,10 +1,8 @@
 # partner-http-api
 
-TODO: Add description
+The partner-http-api routes http requests to partner-works.
 
 ## Configuration
-
-TODO: Add partner-http-api specific configuration.
 
 * ALLOWED_ORIGINS
     * This env var controls the cross-origin resource sharing (CORS) settings.
@@ -20,7 +18,22 @@ TODO: Add partner-http-api specific configuration.
 
 ## Usage
 
-TODO: Add usage
+### Listing partner sites
+
+```
+GET /partners/sites
+```
+
+Will return a message from partner-works like this:
+
+```
+[{:domain "beta.turbovote.org"
+  :cloudfront-distribution-id "CDSFS(*F&SD(*FSIUYFH"}
+ ...]
+```
+
+You can request it with `Content-Type: application/json` to get it in
+JSON, which is what the turbovote-web deploy does.
 
 ## Running
 
@@ -37,8 +50,6 @@ Run it:
 ```
 > docker-compose up
 ```
-
-TODO: If any more env vars are needed, add them to docker-compose command above.
 
 ### Running in CoreOS
 
