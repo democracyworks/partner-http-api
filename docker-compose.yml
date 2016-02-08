@@ -4,7 +4,7 @@ app:
     - rabbitmq
     - wildfly
   environment:
-    ALLOWED_ORIGINS: :all
+    ALLOWED_ORIGINS: '[".*"]'
 partner-works:
   build: ../partner-works
   links:
