@@ -24,14 +24,14 @@
                               ""
                               "partner-works.partner-site.list"
                               (config [:rabbitmq :queues "partner-works.partner-site.list"])
-                              5000
+                              10000
                               channels/partner-site-list)]
           outgoing-events []]
 
       (wire-up/start-responder! channels/ok-requests
                                 channels/ok-responses
                                 handlers/ok)
-      
+
       {:connections [connection]
        :channels (vec (concat
                        incoming-events
