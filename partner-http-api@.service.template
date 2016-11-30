@@ -33,4 +33,4 @@ ExecStart=/bin/bash -c 'docker run --name ${CONTAINER} \
 ExecStop=/usr/bin/docker stop ${CONTAINER}
 
 [X-Fleet]
-MachineOf=wildfly@%i.service
+MachineOf=consul@%i.service
