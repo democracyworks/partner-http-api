@@ -3,7 +3,7 @@
   :url "https://github.com/democracyworks/partner-http-api"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.7.0"]
+  :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/tools.logging "0.3.1"]
                  [turbovote.resource-config "0.2.0"]
                  [com.novemberain/langohr "3.5.0"]
@@ -26,7 +26,6 @@
                  [democracyworks/bifrost "0.1.4"]]
   :plugins [[lein-immutant "2.1.0"]]
   :main ^:skip-aot partner-http-api.server
-  :target-path "target/%s"
   :uberjar-name "partner-http-api.jar"
   :profiles {:uberjar {:aot :all}
              :dev {:resource-paths ["dev-resources"]}
