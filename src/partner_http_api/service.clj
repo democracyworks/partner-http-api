@@ -8,7 +8,6 @@
             [pedestal-toolbox.cors :as cors]
             [pedestal-toolbox.params :refer :all]
             [pedestal-toolbox.content-negotiation :refer :all]
-            [kehaar.core :as k]
             [clojure.core.async :refer [go alt! timeout]]
             [bifrost.core :as bifrost]
             [bifrost.interceptors :as bifrost.i]
