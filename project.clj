@@ -24,7 +24,12 @@
                  [io.pedestal/pedestal.immutant "0.4.1"]
                  [org.immutant/core "2.1.2"]
                  [democracyworks/bifrost "0.1.4"]]
-  :plugins [[lein-immutant "2.1.0"]]
+  :plugins [[lein-immutant "2.1.0"]
+            [com.carouselapps/jar-copier "0.3.0"]]
+  :java-agents [[com.newrelic.agent.java/newrelic-agent "3.35.1"]]
+  :jar-copier {:java-agents true
+               :destination "resources/jars"}
+  :prep-tasks ["javac" "compile" "jar-copier"]
   :main ^:skip-aot partner-http-api.server
   :uberjar-name "partner-http-api.jar"
   :profiles {:uberjar {:aot :all}
