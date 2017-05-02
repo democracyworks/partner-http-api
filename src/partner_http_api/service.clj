@@ -1,17 +1,16 @@
 (ns partner-http-api.service
-  (:require [io.pedestal.http :as bootstrap]
-            [io.pedestal.http.route :as route]
-            [io.pedestal.http.route.definition :refer [defroutes]]
-            [io.pedestal.interceptor :refer [interceptor]]
-            [ring.util.response :as ring-resp]
-            [turbovote.resource-config :refer [config]]
-            [pedestal-toolbox.cors :as cors]
-            [pedestal-toolbox.params :refer :all]
-            [pedestal-toolbox.content-negotiation :refer :all]
-            [clojure.core.async :refer [go alt! timeout]]
-            [bifrost.core :as bifrost]
-            [bifrost.interceptors :as bifrost.i]
-            [partner-http-api.channels :as channels]))
+  (:require
+    [bifrost.core :as bifrost]
+    [bifrost.interceptors :as bifrost.i]
+    [io.pedestal.http :as bootstrap]
+    [io.pedestal.http.route.definition :refer [defroutes]]
+    [io.pedestal.interceptor :refer [interceptor]]
+    [partner-http-api.channels :as channels]
+    [pedestal-toolbox.content-negotiation :refer [negotiate-response-content-type]]
+    [pedestal-toolbox.cors :as cors]
+    [pedestal-toolbox.params :refer [body-params]]
+    [ring.util.response :as ring-resp]
+    [turbovote.resource-config :refer [config]]))
 
 (def ping
   (interceptor
@@ -32,6 +31,11 @@
              (bifrost/interceptor channels/partner-site-list)]}
       ^:interceptors [(bifrost.i/update-in-response [:body :partner-sites]
                                                     [:body] identity)]]
+
+     ["/campus-addresses/:domain"
+      {:get [:campus-addresses
+             (bifrost/interceptor channels/campus-addresses-chan)]}]
+
      ["/ping" {:get [:ping ping]}]]]])
 
 (defn service []
