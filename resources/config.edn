@@ -14,4 +14,9 @@
                      [{:queue "partner-works.partner-site.list"
                        :channel partner-http-api.channels/partner-site-list
                        :response true
+                       :timeout 10000}
+
+                      {:queue "partner-works.campus-address.read-by-domain"
+                       :channel partner-http-api.channels/campus-addresses-chan
+                       :response true
                        :timeout 10000}]}}}
