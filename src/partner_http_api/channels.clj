@@ -2,6 +2,7 @@
   (:require [clojure.core.async :as async]))
 
 (defonce partner-site-list (async/chan 100))
+(defonce partner-site (async/chan 100))
 (defonce campus-addresses-chan (async/chan 100))
 
 (defn close-all! []
