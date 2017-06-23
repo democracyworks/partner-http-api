@@ -16,6 +16,11 @@
                        :response true
                        :timeout 10000}
 
+                      {:queue "partner-works.partner-site.read"
+                       :channel partner-http-api.channels/partner-site-read
+                       :response true
+                       :timeout 10000}
+
                       {:queue "partner-works.campus-address.read-by-domain"
                        :channel partner-http-api.channels/campus-addresses-chan
                        :response true
