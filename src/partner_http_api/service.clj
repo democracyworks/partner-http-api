@@ -35,7 +35,8 @@
        {:get [:partner-site
               (bifrost/interceptor channels/partner-site-read)]}
        ^:interceptors [(bifrost.i/update-in-response [:body :partner-site]
-                                                     [:body] identity)]]]
+                                                     [:body :partner-sites]
+                                                     identity)]]]
 
      ["/campus-addresses/:domain"
       {:get [:campus-addresses
